@@ -19,18 +19,13 @@ class CreateComponent extends Component
 
     public $name;
     public $surname;
-    public $role;
+    public $role = 2;
     public $username;
     public $despartamentos;
     public $password;
     public $email;
     public $user_department_id = 1;
-    public $inactive;
-    public $comunidad_nombre;
-    public $comunidad_direccion;
-    public $comunidad_info;
-    public $comunidad_imagen;
-    public $comunidad_secciones;
+
     public $isAdminCheckbox = false;
 
     public function render()
@@ -41,6 +36,12 @@ class CreateComponent extends Component
     // Al hacer submit en el formulario
     public function submit()
     {
+        if ($this->isAdminCheckbox == false) {
+            $this->role = 2;
+        } elseif ($this->isAdminCheckbox == true) {
+            $this->role = 1;
+        }
+
 
         $this->password = Hash::make($this->password);
         // Validación de datos
@@ -71,24 +72,6 @@ class CreateComponent extends Component
         // Guardar datos validados
         $validatedData['inactive'] = 0;
         $usuariosSave = User::create($validatedData);
-
-        $this->validate([
-            'comunidad_nombre' => 'required|string|max:255',
-            'comunidad_direccion' => 'required|string|max:255',
-            'comunidad_imagen' => 'nullable|image|max:1024', // Por ejemplo, si es una imagen.
-            'comunidad_info'   => 'nullable|string',
-        ]);
-        $imagen_subir = 'communitas_icon.png';
-        if ($this->comunidad_imagen != null) {
-
-            $name = md5($this->comunidad_imagen . microtime()) . '.' . $this->comunidad_imagen->extension();
-
-            $this->comunidad_imagen->storePubliclyAs('public', 'photos/' . $name);
-
-            $imagen_subir = $name;
-        }
-        $comunidadSave = Comunidad::create(['user_id' => $usuariosSave->id, 'nombre' => $this->comunidad_nombre, 'direccion' => $this->comunidad_direccion, 'ruta_imagen' => $imagen_subir, 'informacion_adicional' => $this->comunidad_info]);
-
 
         // Alertas de guardado exitoso
         if ($usuariosSave) {

@@ -14,66 +14,12 @@
         <div id="sidebar-menu" style="position: sticky !important">
             <!-- Left Menu Start -->
             <ul class="metismenu" id="side-menu">
-                @if ($user->role == 1)
-                    <li x-data="" x-init="$('#select2-comunidades').select2();
-                    $('#select2-comunidades').on('change', function(e) {
-                        var data = $('#select2-comunidades').select2('val');
-                        Livewire.emit('cambiarComunidad', data);
-                    });"><select id="select2-comunidades" class="w-100">
-                            @foreach ($comunidades as $comunidad)
-                                <option value="{{ $comunidad->id }}">{{ $comunidad->nombre }}
-                            @endforeach
-                        </select></li>
-                @endif
-                @notmobile
-                    <li>
-                        @if ($comunidad != null)
-                            <h5 style="text-align: center; color: #9ec84c !important">
-                                <img onerror="this.onerror=null; this.src='{{asset('storage/communitas_icon.png')}}';" src="{{ asset('storage/photos/' . $comunidad->ruta_imagen) }}"
-                                    style="max-width: 10vw !important; text-align: center">
-                            </h5>
-                            <h6 style="text-align: center; color: #9ec84c !important">
-                                {{ $comunidad->nombre }} </h5>
-                            @else
-                                <h6 style="text-align: center; color: #9ec84c !important;">
-                                    {{ $user->name }} </h5>
-                        @endif
-                    </li>
-                @elsenotmobile
-                    <li>
-                        @if ($comunidad != null)
-                            <h5 style="text-align: center; color: #9ec84c !important">
-                                <img onerror="this.onerror=null; this.src='{{asset('storage/communitas_icon.png')}}';" src="{{ asset('storage/photos/' . $comunidad->ruta_imagen) }}"
-                                    style="max-width: 90vw !important; text-align: center">
-                            </h5>
-                            <h2 style="text-align: center; color: #9ec84c !important">
-                                {{ $comunidad->nombre }} </h2>
-                        @else
-                            <h6 style="text-align: center; color: #9ec84c !important;">
-                                {{ $user->name }} </h5>
-                        @endif
-                    </li>
-                @endnotmobile
                 <li class="menu-title">General</li>
                 <li>
                     <a href="/../home" class="waves-effect">
                         <i class="icon-accelerator"></i> {{-- <span class="badge badge-success badge-pill float-right">9+</span> --}} <span> Dashboard </span>
                     </a>
                 </li>
-                <li>
-                    <a href="/admin/secciones" class="waves-effect"><i class="fas fa-folder"></i><span> Secciones
-                        </span></a>
-                </li>
-                <li>
-                    <a href="/admin/comunidad" class="waves-effect"><i class="fas fa-home"></i><span> Comunidad
-                        </span></a>
-                </li>
-                @if ($user->role == 1)
-                    <li>
-                        <a href="/admin/usuarios" class="waves-effect"><i class="fas fa-user"></i><span> Usuarios
-                            </span></a>
-                    </li>
-                @endif
                 <li>
                     <a href="/admin/avisos" class="waves-effect"><i class="fas fa-bell"></i><span> Avisos
                         </span></a>

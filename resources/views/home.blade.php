@@ -8,8 +8,12 @@
 @endsection
 
 @section('content-principal')
-<div>
-    @livewire('home-component')
-</div>
-
+<style>
+    .content-page .content {
+    padding:unset !important;
+    margin-bottom: unset !important;
+    background: white;
+}
+</style>
+    <iframe src="/laravel-filemanager" style="width: 100%; height: 100%;"></iframe>
 @endsection

@@ -89,95 +89,6 @@
                                 </button>
                             </div>
                         </div>
-                        <h5> Datos de comunidad </h5>
-                        <hr />
-                        @if ($comunidad != null)
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <label for="comunidad_imagen" class="col-sm-12 col-form-label">Foto de la
-                                        comunidad</label>
-                                    <div class="col-sm-11">
-                                        @if (isset($comunidad_imagen))
-                                            <div class="col text-center">
-                                                @if (is_string($comunidad_imagen))
-                                                    <img src="{{ asset('storage/photos/' . $comunidad_imagen) }}"
-                                                        style="max-height: 30vh !important; text-align: center">
-                                                @else
-                                                    <img src="{{ $comunidad_imagen->temporaryUrl() }}"
-                                                        style="max-height: 30vh !important; text-align: center">
-                                                @endif
-                                            </div>
-                                        @endif
-                                        <br>
-                                        <input type="file" class="form-control" wire:model="comunidad_imagen"
-                                            name="comunidad_imagen" id="comunidad_imagen"
-                                            placeholder="Imagen del producto...">
-                                        @error('comunidad_imagen')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="comunidad_nombre" class="col-sm-12 col-form-label">Nombre de la
-                                        comunidad</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" wire:model.defer="comunidad_nombre"
-                                            class="form-control" name="comunidad_nombre" id="comunidad_nombre"
-                                            placeholder="José Carlos...">
-                                        @error('comunidad_nombre')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="comunidad_direccion"
-                                        class="col-sm-12 col-form-label">Dirección</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" wire:model.defer="comunidad_direccion"
-                                            class="form-control" name="comunidad_direccion" id="comunidad_direccion"
-                                            placeholder="Pérez...">
-                                        @error('comunidad_direccion')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <label for="comunidad_info" class="col-sm-12 col-form-label">Información
-                                        adicional</label>
-                                    <div class="col-sm-11">
-                                        <textarea wire:model.defer="comunidad_info" class="form-control" name="comunidad_info" id="comunidad_info"
-                                            placeholder="Pérez..."></textarea>
-                                        @error('comunidad_info')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <h5> Secciones </h5>
-                            <hr />
-                            @php
-                                $renderSections = function ($secciones) use (&$renderSections) {
-                                    echo '<ul>';
-                                    foreach ($secciones as $seccion) {
-                                        $iconUrl = asset('storage/photos/' . $seccion['seccion']->ruta_imagen);
-                                        echo '<li class="font-16">';
-                                        // Comprueba si existe una ruta de imagen y muestra el icono
-                                        if (!empty($seccion['seccion']->ruta_imagen)) {
-                                            echo '<img src="' . e($iconUrl) . '" alt="Icono" style="width: 32px; height: 32px;" onerror="this.onerror=null; this.src=' . asset("storage/communitas_icon.png") .';"> ';
-                                        }
-                                        echo e($seccion['seccion']->nombre);
-                                        if (!empty($seccion['hijas'])) {
-                                            $renderSections($seccion['hijas']); // Llamada recursiva para renderizar las subsecciones
-                                        }
-                                        echo '</li>';
-                                    }
-                                    echo '</ul>';
-                                };
-                            @endphp
-
-                            {{ $renderSections($comunidad_secciones) }}
-                        @endif
-                    </form>
                 </div>
             </div>
         </div>
@@ -189,8 +100,6 @@
                         <div class="col-12">
                             <button class="w-100 btn btn-success mb-2" id="alertaGuardar">Guardar
                                 Usuario</button>
-                            <button class="w-100 btn btn-success mb-2" id="alertaDuplicar">Nuevo usuario con estas
-                                secciones</button>
                             <button class="w-100 btn btn-danger mb-2" wire:click="destroy">Eliminar
                                 Usuario</button>
                         </div>
@@ -213,19 +122,6 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.livewire.emit('update');
-                }
-            });
-        });
-        $("#alertaDuplicar").on("click", () => {
-            Swal.fire({
-                title: '¿Estás seguro?',
-                text: 'Te llevaremos a un formulario para crear un usuario nuevo con las mismas secciones.',
-                icon: 'warning',
-                showConfirmButton: true,
-                showCancelButton: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.livewire.emit('duplicate');
                 }
             });
         });

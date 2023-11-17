@@ -25,11 +25,7 @@
                                 <tr>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Username</th>
-                                    <th scope="col">Comunidad</th>
                                     <th scope="col">Email</th>
-
-
-
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
@@ -38,11 +34,7 @@
                                     <tr>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->username }}</td>
-                                        <td>{{ $this->getComunidad($user->id) }}</td>
                                         <td>{{ $user->email }}</td>
-
-
-
                                         <td> <a href="usuarios-edit/{{ $user->id }}"
                                                 class="btn btn-primary">Ver/Editar</a> </td>
                                     </tr>

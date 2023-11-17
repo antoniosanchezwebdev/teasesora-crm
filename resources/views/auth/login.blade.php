@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Iniciar sesión - Mi comunidad - COMMUNITAS</title>
+    <title>Iniciar sesión - EXTRANET TE ASESORA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.css" integrity="sha512-CaTMQoJ49k4vw9XO0VpTBpmMz8XpCWP5JhGmBvuBqCOaOHWENWO1CrVl09u4yp8yBVSID6smD4+gpzDJVQOPwQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -13,19 +13,19 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body style="background-color: #fff;">
+<body style="background-color: #333844;">
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-sm-12 text-center">
-                <img src="{{ asset('assets/images/logo-empresa.png') }}" style="width: 35% !important;">
+                @mobile <img src="{{ asset('assets/images/logo-empresa.png') }}" style="width: 90% !important;"> @elsemobile <img src="{{ asset('assets/images/logo-empresa.png') }}" style="width: 25% !important;"> @endmobile
             </div>
         </div>
         <br>
         <br>
         <br>
         <div class="row justify-content-center">
-            <div class="col-sm-12 text-center" style="color: #9ec84c !important">
-                <h1 style="font-size: 3rem !important;">Mi comunidad</h1>
+            <div class="col-sm-12 text-center" style="color: white !important">
+                <h1 style="font-size: 3rem !important;">Mis documentos</h1>
             </div>
         </div>
 
@@ -36,7 +36,7 @@
 
                     <div class="col-sm-4">
                     <div class="card">
-                        <div class="card-body" style="background-color: #9ec84c !important">
+                        <div class="card-body" style="background-color: white !important">
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
 
@@ -86,8 +86,8 @@
                                 <div class="row mb-0 justify-content-center">
                                     <div class="col-sm-11">
                                         <button type="submit" class="btn w-100"
-                                            style="background-color: #fff !important;">
-                                            <span style="color: #9ec84c !important"><b>{{ __('Iniciar sesión') }}</b></span>
+                                            style="background-color: #333844 !important;">
+                                            <span style="color: white !important"><b>{{ __('Iniciar sesión') }}</b></span>
                                         </button>
                                     </div>
                                 </div>

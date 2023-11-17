@@ -99,59 +99,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <h5> Datos de comunidad </h5>
-                            <hr />
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <label for="comunidad_imagen" class="col-sm-12 col-form-label">Foto de la
-                                        comunidad</label>
-                                    @if ($comunidad_imagen)
-                                        <div class="col-sm-11">
-                                            <img src="{{ $comunidad_imagen->temporaryUrl() }}"
-                                                style="max-height: 30vh !important; text-align: center">
-                                        </div>
-                                    @endif
-                                    <br>
-                                    <input type="file" class="form-control" wire:model="comunidad_imagen"
-                                        name="comunidad_imagen" id="comunidad_imagen"
-                                        placeholder="Imagen del producto...">
-                                    @error('comunidad_imagen')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="comunidad_nombre" class="col-sm-12 col-form-label">Nombre de la
-                                    comunidad</label>
-                                <div class="col-sm-10">
-                                    <input type="text" wire:model.defer="comunidad_nombre" class="form-control"
-                                        name="comunidad_nombre" id="comunidad_nombre" placeholder="José Carlos...">
-                                    @error('comunidad_nombre')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="comunidad_direccion" class="col-sm-12 col-form-label">Dirección</label>
-                                <div class="col-sm-10">
-                                    <input type="text" wire:model.defer="comunidad_direccion" class="form-control"
-                                        name="comunidad_direccion" id="comunidad_direccion" placeholder="Pérez...">
-                                    @error('comunidad_direccion')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <label for="comunidad_info" class="col-sm-12 col-form-label">Información
-                                    adicional</label>
-                                <div class="col-sm-11">
-                                    <textarea wire:model.defer="comunidad_info" class="form-control" name="comunidad_info" id="comunidad_info"
-                                        placeholder="Pérez..."></textarea>
-                                    @error('comunidad_info')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
                     </div>
                     </form>
                 </div>

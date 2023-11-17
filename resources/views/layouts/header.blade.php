@@ -4,33 +4,30 @@
 
     <!-- LOGO -->
     @mobile
-        <div class="topbar-left" style="margin-bottom: -145px !important;">
-            <button class="logo button-menu-mobile open-left waves-effect w-100"
-                style="background-color: #fff !important; text-align: center;">
+        <div class="topbar-left" style="margin-bottom: -144px !important;">
+            <span class="logo-sm">
+                <a href="{{ route('home') }}"><img class="img-fluid p-1" src="{{ asset('assets/images/logo-empresa.png') }}"
+                        alt="Logo La Fabrica"></a>
+            </span>
+        </div>
+        @elsenotmobile
+        @tablet
+            <div class="topbar-left" style="margin-bottom: -144px !important;">
+                <span class="logo-sm">
+                    <a href="{{ route('home') }}"><img class="img-fluid p-1" src="{{ asset('assets/images/logo-empresa.png') }}"
+                            alt="Logo La Fabrica"></a>
+                </span>
+            </div>
+        @elsetablet
+            <div class="topbar-left" style="margin-bottom: -144px !important;">
                 <span class="logo-light">
-                    <img class="img-fluid p-4" src="{{ asset('assets/images/logo-empresa.png') }}" alt="Logo La Fabrica">
+                    <a href="{{ route('home') }}"><img class="img-fluid p-4" src="{{ asset('assets/images/logo-empresa.png') }}"
+                            alt="Logo La Fabrica"></a>
                     {{-- <i class="mdi mdi-camera-control"></i> La Fabrica --}}
                 </span>
-                <span class="logo-sm">
-                    <img class="img-fluid p-1" src="{{ asset('assets/images/logo-empresa.png') }}" alt="Logo La Fabrica">
-                </span>
-            </button>
-        </div>
-    @elsemobile
-        <div class="topbar-left" style="margin-bottom: -145px !important;">
-            <button class="logo button-menu-mobile open-left waves-effect w-100 h-100"
-                style="background-color: #fff !important; text-align: center;">
-                    <span class="logo-light">
-                        <img class="img-fluid p-4" src="{{ asset('assets/images/logo-empresa.png') }}"
-                            alt="Logo La Fabrica">
-                        {{-- <i class="mdi mdi-camera-control"></i> La Fabrica --}}
-                    </span>
-                    <span class="logo-sm">
-                        <img class="img-fluid p-1" src="{{ asset('assets/images/logo-empresa.png') }}"
-                            alt="Logo La Fabrica">
-                    </span>
-            </button>
-        </div>
+            </div>
+        @endtablet
+
     @endmobile
     <nav class="navbar-custom">
         <ul class="navbar-right list-inline float-right mb-0">
@@ -55,58 +52,21 @@
                 </a>
             </li>
 
-            <!-- notification -->
-            <li class="dropdown notification-list list-inline-item">
-                <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#"
-                    role="button" aria-haspopup="false" aria-expanded="false">
-                    <i class="mdi mdi-bell-outline noti-icon"></i>
-                    <span class="badge badge-pill badge-danger noti-icon-badge">{{ $user->alertas()->wherePivot('status', 0)->count() }}</span>
-                </a>
-                @if ($user->alertas()->wherePivot('status', 0)->count() > 0)
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-lg px-1">
-                        <!-- item-->
-                        <h6 class="dropdown-item-text">
-                            Notifications
-                        </h6>
-
-                        <div class="slimscroll notification-item-list">
-                            @foreach ($user->alertas()->wherePivot('status', 0)->get() as $alerta)
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
-                                <p class="notify-details"><b>{{$alerta->titulo}}</b><span class="text-muted">{{$alerta->descripcion}}</span></p>
-                            </a>
-                            @endforeach
-                        </div>
-                        <!-- All-->
-                        <a href="{{route('avisos.index')}}" class="dropdown-item text-center notify-all text-primary">
-                            Ver Todas <i class="fi-arrow-right"></i>
-                        </a>
-
-
-                    </div>
-                @else
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-lg px-1">
-                        <!-- item-->
-                        <h6 class="dropdown-item-text">
-                            No tienes notificaciones
-                        </h6>
-                    </div>
-                @endif
-            </li>
-
             <li class="dropdown notification-list list-inline-item">
                 <div class="dropdown notification-list nav-pro-img">
                     <a class="dropdown-toggle nav-link arrow-none nav-user" data-toggle="dropdown" href="#"
                         role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="https://crm.fabricandoeventosjerez.com/assets/images/users/user-4.jpg"
-                            alt="user" class="rounded-circle">
+                        <i class="mdi mdi-dots-horizontal-circle-outline noti-icon"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                        <div class="dropdown-divider"></div>
+                        @if (Auth::user()->role == 1)
+                            <a class="dropdown-item" href="{{ route('usuarios.index') }}"><i
+                                    class="mdi mdi-user"></i>Gestionar usuarios</a>
+                            <div class="dropdown-divider"></div>
+                        @endif
                         {{-- Formulario invisible para que Laravel detecte el cierre de sesión como POST. --}}
                         @auth
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         @endauth
@@ -122,11 +82,6 @@
         </ul>
 
         <ul class="list-inline menu-left mb-0">
-            <li class="float-left">
-                <button class="button-menu-mobile open-left waves-effect">
-                    <i class="mdi mdi-menu"></i>
-                </button>
-            </li>
             {{-- <li class="d-none d-md-inline-block">
                         <form role="search" class="app-search">
                             <div class="form-group mb-0">

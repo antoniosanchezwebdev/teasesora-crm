@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php use App\Models\Comunidad; ?>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -13,7 +12,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <script src="//unpkg.com/alpinejs" defer></script>
 
-    <title>COMMUNITAS - @yield('title') </title>
+    <title>@yield('title') - EXTRANET TE ASESORA</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.css"
         integrity="sha512-CaTMQoJ49k4vw9XO0VpTBpmMz8XpCWP5JhGmBvuBqCOaOHWENWO1CrVl09u4yp8yBVSID6smD4+gpzDJVQOPwQ=="
@@ -50,11 +49,7 @@
 </head>
 
 <body>
-    @php
-        $user = Auth::user();
-        $comunidad = Comunidad::where('user_id', Auth::id())->first();
-    @endphp
-    <div id="app">
+    <div id="app" style="min-height: 100vh !important;">
         <style>
             /* .sidebar {
                 width: 15%;
@@ -74,11 +69,10 @@
 
             }
         </style>
-        <div class="page-wrapper chiller-theme toggled sticky-sidebar" id="wrapper">
+        <div class="page-wrapper chiller-theme toggled sticky-sidebar" id="wrapper" style="height:100vh !important">
             @include('layouts.header')
-            @include('layouts.sidebar')
-            <div class="content-page">
-                <div class="content">
+            <div class="content-page" style="height:100% !important">
+                <div class="content" style="height:91% !important">
                     {{-- @livewire('container-component') --}}
                     @yield('content-principal')
 
