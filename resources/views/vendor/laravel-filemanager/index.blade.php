@@ -79,7 +79,7 @@
 
     <div id="main">
       <div id="alerts"></div>
-
+      <input type="text" id="search-input" class="mb-1 mt-1 form-control" placeholder="Buscar...">
       <nav aria-label="breadcrumb" class="d-none d-lg-block" id="breadcrumbs">
         <ol class="breadcrumb">
           <li class="breadcrumb-item invisible">Home</li>

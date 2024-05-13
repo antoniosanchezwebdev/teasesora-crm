@@ -19,7 +19,7 @@ class UsuarioController extends Controller
         if (Auth::user()->role == 1) {
             return view('usuario.index', compact('response'));
         } else {
-            return redirect()->back();
+            return view('home', compact('response'));
         }
     }
 
@@ -34,7 +34,7 @@ class UsuarioController extends Controller
         if (Auth::user()->role == 1) {
             return view('usuario.create');
         } else {
-            return redirect()->back();
+            return view('home', compact('response'));
         }
     }
     public function duplicar($id)
@@ -42,7 +42,7 @@ class UsuarioController extends Controller
         if (Auth::user()->role == 1) {
             return view('usuario.duplicar', compact('id'));
         } else {
-            return redirect()->back();
+            return view('home', compact('response'));
         }
     }
 
@@ -79,7 +79,7 @@ class UsuarioController extends Controller
         if (Auth::user()->role == 1) {
             return view('usuario.edit', compact('id'));
         } else {
-            return redirect()->back();
+            return view('home', compact('response'));
         }
     }
 

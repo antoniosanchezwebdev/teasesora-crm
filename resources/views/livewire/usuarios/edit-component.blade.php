@@ -98,9 +98,9 @@
                     <h5>Acciones</h5>
                     <div class="row">
                         <div class="col-12">
-                            <button class="w-100 btn btn-success mb-2" id="alertaGuardar">Guardar
+                            <button type="button" class="w-100 btn btn-success mb-2" id="alertaGuardar">Guardar
                                 Usuario</button>
-                            <button class="w-100 btn btn-danger mb-2" wire:click="destroy">Eliminar
+                            <button type="button" class="w-100 btn btn-danger mb-2" wire:click="destroy">Eliminar
                                 Usuario</button>
                         </div>
                     </div>

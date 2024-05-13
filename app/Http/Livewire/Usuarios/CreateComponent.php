@@ -25,8 +25,8 @@ class CreateComponent extends Component
     public $password;
     public $email;
     public $user_department_id = 1;
-
     public $isAdminCheckbox = false;
+
 
     public function render()
     {

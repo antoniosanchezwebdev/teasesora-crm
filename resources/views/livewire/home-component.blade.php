@@ -1,6 +1,5 @@
 <div class="container" style="width: 100%; height: 100%">
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-    <iframe src="/laravel-filemanager" style="width: max-content; height: max-content; overflow: hidden; border: none;"></iframe>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
