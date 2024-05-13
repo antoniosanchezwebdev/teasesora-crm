@@ -16,6 +16,7 @@ return [
     'menu-download'     => 'Descargar',
     'menu-resize'       => 'Redimensionar',
     'menu-crop'         => 'Recortar',
+    'menu-move'         => 'Mover',
     'menu-multiple'     => 'Selc.Multiple',
 
     'title-page'        => 'Administrador de Archivos',
@@ -63,7 +64,8 @@ return [
     'btn-copy-crop'     => 'Copiar y recortar',
     'btn-cancel'        => 'Cancelar',
     'btn-resize'        => 'Redimensionar',
-    'btn-confirm'        => 'Confirmar',
+    'btn-open'          => 'Abrir',
+    'btn-confirm'       => 'Confirmar',
 
     'resize-ratio'      => 'Ratio:',
     'resize-scaled'     => 'Imagen escalada:',
