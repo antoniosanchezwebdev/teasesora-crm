@@ -79,7 +79,7 @@
 
     <div id="main">
       <div id="alerts"></div>
-      <input type="text" id="search-input" class="mb-1 mt-1 form-control" placeholder="Buscar...">
+
       <nav aria-label="breadcrumb" class="d-none d-lg-block" id="breadcrumbs">
         <ol class="breadcrumb">
           <li class="breadcrumb-item invisible">Home</li>
@@ -136,6 +136,17 @@
   </div>
 
   <div class="modal fade" id="notify" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">{{ trans('laravel-filemanager::lfm.btn-close') }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body"></div>
